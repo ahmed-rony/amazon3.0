@@ -2,12 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+const port = 30000;
+
 const app = express();
 require('dotenv').config();  // .env;
 // ============= middleware ==================
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors());
+
 
 
 // ==========================================
@@ -79,4 +82,4 @@ client.connect(err => {
 
 
 
-app.listen(30000);
+app.listen( process.env.PORT || port);
