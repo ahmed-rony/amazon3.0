@@ -1,11 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+require('dotenv').config();  // .env;
 
 const port = 30000;
 
 const app = express();
-require('dotenv').config();  // .env;
 // ============= middleware ==================
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: false }))
@@ -15,7 +15,7 @@ app.use(cors());
 
 // ==========================================
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://amazonDB:l667tA6usYoQflmO@cluster0.hbcvbmv.mongodb.net/amazonData?retryWrites=true&w=majority";
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.hbcvbmv.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 // ========================================== 
